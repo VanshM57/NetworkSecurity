@@ -1,3 +1,5 @@
+# This file is used to push data from csv file to mongodb
+
 import os 
 import sys
 import json
@@ -25,7 +27,7 @@ class NetworkDataExtract():
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
-
+#take data from csv file and convert it to json format
     def csv_to_json_convertor(self,file_path):
         try:
             data = pd.read_csv(file_path)
@@ -36,6 +38,7 @@ class NetworkDataExtract():
         except Exception as e:
             raise NetworkSecurityException(e, sys)
         
+#insert data into mongodb
     def insert_data_mongodb(self,records,database,collection):
         try:
             self.database = database
